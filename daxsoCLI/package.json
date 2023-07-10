@@ -1,6 +1,6 @@
 {
-  "name": "daxsoCLI",
+  "name": "daxso-cli",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "index.ts",
   "license": "MIT"
 }
