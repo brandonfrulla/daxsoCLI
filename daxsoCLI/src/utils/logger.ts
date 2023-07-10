@@ -1,42 +1,71 @@
-import gradient from "gradient-string";
-import { getUserPkgManager } from "./getUserPackageManager";
-import { fullTitle, titleText } from "../comp/title";
-import chalk from 'chalk';
-import cfont from 'cfonts';
+import chalk from "chalk";
 
+const UserAgent = process.platform
 
-  const daxTheme = {
-    Silver: "#C9C6C8",
-    //Licorice: "#1D101B",
-    Eggplant: "#65505B",
-    Wine: "#622E35",
-    //RichBlack: "#060914",
-    RoseTope: "#92636A",
-    //DkPurple: "#341D26",
-    ChocCosmos: "#651A23",
-    //BlackBeen: "#330717",
-    Cordovan: "#853B3D",
+export interface PlausibleEvent {
+  name: string;
+  url: string;
+  domain: string;
+}
+
+async function trackEvent(event: PlausibleEvent): Promise<void> {
+  const response = await fetch('https://analytics.daxdev.app/stats/api/event', {
+    method: 'POST',
+    headers: {
+      'User-Agent': UserAgent || '',
+      'X-Forwarded-For': '127.0.0.1',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(event),
+  });
+
+  if (!response.ok) {
+    throw new Error(`Failed to track event: ${response.statusText}`);
+  }
+}
+
+export default trackEvent;
+
+export const triggerAnalytics = async (questionName: string, questionResponse: string) => {
+  const event: PlausibleEvent = {
+    name: questionName,
+    url: `http://analytics.daxdev.app/${questionResponse}`,
+    domain: 'analytics.daxdev.app',
   };
-  export const renderTitle = () => {
-    const daxGradient = gradient(Object.values(daxTheme));
 
-    // resolves weird behavior where the ascii is offset
-    const pkgManager = getUserPkgManager();
-    if (pkgManager === "yarn" || pkgManager === "pnpm") {
-      console.log("");
-    }
-    console.log(daxGradient.multiline(titleText));
-    console.log(chalk.hex("#92636A").bold(fullTitle));
-    cfont.say("For more information or help please visit https://dax.so", {
-      colors: ["#C9C6C8", "#65505B", "#622E35", "#92636A", "#651A23", "#853B3D"],
-      font: "console",
-      align: "center",
-      background: "#341D26",
-      letterSpacing: 1,
-      lineHeight: 1,
-      space: false,
-      gradient: true,
-    });
-    console.log("");
+  console.log(event);
+  await trackEvent(event);
+};
 
-  };
+
+/*
+
+TrackEvent: (eventName: string, options?: EventOptions, eventData?: PlausibleOptions) => void
+
+EventOptions: { callback?: undefined | (() => void); props?: undefined | {} }
+PlausibleOptions: PlausibleInitOptions & PlausibleEventData
+
+
+PlausibleInitOptions: { apiHost?: undefined | string; domain?: Location["hostname"]; hashMode?: undefined | false | true; trackLocalhost?: undefined | false | true }
+PlausibleEventData: { deviceWidth?: Window["innerWidth"]; referrer?: Document["referrer"] | null; url?: Location["href"] }
+*/
+
+export type EventTypes = {
+  [propName: string]: string | number | boolean;
+};
+
+
+export const logger = {
+  error( ...args: unknown[] ) {
+    console.log( chalk.red( ...args ) );
+  },
+  warn( ...args: unknown[] ) {
+    console.log( chalk.yellow( ...args ) );
+  },
+  info( ...args: unknown[] ) {
+    console.log( chalk.cyan( ...args ) );
+  },
+  success( ...args: unknown[] ) {
+    console.log( chalk.green( ...args ) );
+  },
+};
