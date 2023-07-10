@@ -1,0 +1,8 @@
+{
+  "workspaces": {
+    "packages": [
+      "daxsoCLI",
+      "templates/apps/*"
+    ]
+  }
+}
