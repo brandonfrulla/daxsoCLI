@@ -1,4 +1,6 @@
 import fs from 'fs';
+import { newProjectAuthor, newProjectLocationQuestion, newProjectName } from './questions/frontend';
+import { promptBlockchain, promptSmartContractERC } from './questions/blockchain';
 
 // Define a type for the response data
 export type ResponseData = Record<string, unknown>;
@@ -31,6 +33,11 @@ const writeToFile = ( data: ResponseData ) => {
 export const questionFunctions: Array<() => Promise<void>> = [
 
   // Question 1
+  newProjectLocationQuestion,
+  newProjectAuthor,
+  newProjectName,
+  promptBlockchain,
+  promptSmartContractERC,
 
 
 ];
