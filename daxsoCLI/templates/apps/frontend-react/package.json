@@ -1,5 +1,5 @@
 {
-    "name": "daxsoCLI/templates/apps/frontend-react/", 
+    "name": "frontend-react", 
     "version": "1.0.0",
     "main": "index.js",
     "license": "MIT"
