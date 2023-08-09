@@ -2,7 +2,7 @@
 
 import { renderTitle } from "./../src/utils/renderTitle"
 import { logger } from "./../src/utils/logger";
-import { askQuestions } from "./store";
+import { askQuestions, responseData } from "./store";
 import createFileStruct from "../plopfile";
 import { NodePlopAPI } from 'plop';
 import nodePlop from 'node-plop';
@@ -17,9 +17,9 @@ const main = async () => {
     renderTitle();
     //triggerAnalytics('renderTitle', 'title');
     //buildPkgInstallerMap(["devTest", "devTest2"])
-    askQuestions();
-
-    createFileStruct(await plop);
+    await askQuestions();
+    await createFileStruct(await plop);
+    console.log("done")
 
     //read the contents of response.json and write to .env
 

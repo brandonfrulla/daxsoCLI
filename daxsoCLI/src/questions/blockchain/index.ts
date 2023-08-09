@@ -22,7 +22,7 @@ export const promptBlockchain = async (): Promise<void> => {
     }
 
     responseData.blockchain = blockchain;
-    handleResponseChange( responseData );
+    await handleResponseChange( responseData );
     
 };
 
@@ -45,6 +45,6 @@ export const promptSmartContractERC = async (): Promise<void> => {
     }
 
     responseData.smartContractERC = smartContractERC;
-    handleResponseChange( responseData );
+    await handleResponseChange( responseData );
 
 };

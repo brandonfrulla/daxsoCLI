@@ -18,11 +18,11 @@ export const newProjectAuthor = async (): Promise<void> => {
         name: 'newProjectAuthor',
         type: 'input',
         message: 'Who is the creator of your new project?',
-        default: 'Dax the Dev',
+        default: 'Dax the Dev', 
     } );
 
     responseData.newProjectAuthor = newProjectAuthor;
-    handleResponseChange( responseData );
+    await handleResponseChange( responseData );
 }
 
 export const newProjectName = async (): Promise<void> => {
@@ -34,7 +34,7 @@ export const newProjectName = async (): Promise<void> => {
     } );
     
     responseData.newProjectName = newProjectName;
-    handleResponseChange( responseData );
+    await handleResponseChange( responseData );
 }
 
 
@@ -47,5 +47,31 @@ export const allowAnalytics = async (): Promise<void> => {
     } );
 
     responseData.analytics = analytics;
-    handleResponseChange( responseData );
+    await handleResponseChange( responseData );
+}
+
+export const promptFrontend = async (): Promise<void> => {
+    const { frontendAppType } = await inquirer.prompt<{ frontendAppType: string }>( {
+        name: 'frontend',
+        type: 'list',
+        message: 'What frontend framework will you be using?',
+        choices: ["React", "React-Native", "Next", "Svelte", "Other"],
+        default: 'React',
+    } );
+
+    //const contractLanguageString = frontend.toString().replace( / /g, '' ).replace( /,/g, '/' );
+    //triggerAnalytics( 'frontend', contractLanguageString );
+
+    if ( frontendAppType === 'React' ) {
+        //logger.success( `${frontend}` );
+        console.log( `${frontendAppType}` );
+
+    } else if ( frontendAppType !==  'React') {
+        //logger.error( `I'm sorry ${frontend} has not been implemented.` );
+        console.log( `I'm sorry ${frontendAppType} has not been implemented.` );
+    }
+
+    responseData.frontendAppType = frontendAppType;
+    await handleResponseChange( responseData );
+    
 }

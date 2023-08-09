@@ -18,7 +18,7 @@ The repository is structured into various applications and packages:
 
 ### Packages
 
-- `eslint-config-custom`: Custom ESLint configuration used across all applications.
+- `eslint-config-custom`: Custom ESLint configuration is used across all applications.
 
 ## Installation
 
