@@ -19,6 +19,7 @@ const main = async () => {
     //buildPkgInstallerMap(["devTest", "devTest2"])
     await askQuestions();
     await createFileStruct(await plop);
+    
     console.log("done")
 
     //read the contents of response.json and write to .env

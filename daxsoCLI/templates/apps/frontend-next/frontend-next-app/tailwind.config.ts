@@ -29,15 +29,7 @@ const config: Config = {
 				BlackBeen: "#330717",
 				Cordovan: "#853B3D",
 			},
-
-
-			
-
-
 		},
-
-		
-		
 	},
   plugins: [],
 }
