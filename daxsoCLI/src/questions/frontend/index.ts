@@ -1,17 +1,52 @@
+import { handleResponseChange, responseData } from "../../store";
+import fs from 'fs';
 import inquirer from "inquirer";
-import { responseData, handleResponseChange } from "../../store";
+import path from 'path';
 
-export const newProjectLocationQuestion = async (): Promise<void> => {
-    const { newProjectLocation } = await inquirer.prompt<{ newProjectLocation: string }>( {
-        name: 'newProjectLocation',
-        type: 'input',
-        message: 'Where would you like to create your new project?',
-        default: process.cwd(),
-    } );
+export const newProjectLocation = async (): Promise<void> => {
+    //get current working directory
+    const cwd = process.cwd();
 
-    responseData.newProjectLocation = newProjectLocation;
-    handleResponseChange( responseData );
+    try {
+        const { newProjectLocation } = await inquirer.prompt<{ newProjectLocation: string }>({
+            name: 'newProjectLocation',
+            type: 'input',
+            message: 'Where would you like to create your new Project?',
+            default: cwd,
+        });
+        
+        const absolutePath = path.resolve(newProjectLocation);
+        
+        if (fs.existsSync(absolutePath)) {
+            console.log(`The directory ${absolutePath} already exists!`);
+            return;
+        }
+
+        responseData.newProjectLocation = newProjectLocation; // Ensure responseData is defined
+        await handleResponseChange(responseData); // Ensure handleResponseChange is defined and handles errors
+        
+        fs.mkdirSync(absolutePath);
+        console.log(`Created new project folder at ${absolutePath}`);
+    } catch (error) {
+        console.error('An error occurred:', error);
+    }
 };
+
+export const newProjectName = async (): Promise<void> => {
+    const { newProjectName } = await inquirer.prompt<{ newProjectName: string }>({
+        name: 'newProjectName',
+        type: 'input',
+        message: 'What is the name of your new project?',
+        default: 'My New Project',
+    });
+
+    responseData.newProjectName = newProjectName;
+    await handleResponseChange(responseData);
+
+    fs.mkdirSync(newProjectName);
+    console.log(`Created new project folder at ${newProjectName}`);
+}
+
 
 export const newProjectAuthor = async (): Promise<void> => {
     const { newProjectAuthor } = await inquirer.prompt<{ newProjectAuthor: string }>( {
@@ -25,30 +60,6 @@ export const newProjectAuthor = async (): Promise<void> => {
     await handleResponseChange( responseData );
 }
 
-export const newProjectName = async (): Promise<void> => {
-    const { newProjectName } = await inquirer.prompt<{ newProjectName: string }>( {
-        name: 'newProjectName',
-        type: 'input',
-        message: 'What is the name of your new project?',
-        default: 'My New Project',
-    } );
-    
-    responseData.newProjectName = newProjectName;
-    await handleResponseChange( responseData );
-}
-
-
-export const allowAnalytics = async (): Promise<void> => {
-    const { analytics } = await inquirer.prompt<{ analytics: string }>( {
-        name: 'analytics',
-        type: 'confirm',
-        message: 'Would you like to allow basic analytics? It would really help us out if you did. We don\'t sell your data or anything like that. We just want to know how many people are using our tool so we can make it better. Would you like to allow analytics?',
-        default: 'yes',
-    } );
-
-    responseData.analytics = analytics;
-    await handleResponseChange( responseData );
-}
 
 export const promptFrontend = async (): Promise<void> => {
     const { frontendAppType } = await inquirer.prompt<{ frontendAppType: string }>( {
@@ -66,12 +77,18 @@ export const promptFrontend = async (): Promise<void> => {
         //logger.success( `${frontend}` );
         console.log( `${frontendAppType}` );
 
-    } else if ( frontendAppType !==  'React') {
+    } else if ( frontendAppType ===  'Next') {
         //logger.error( `I'm sorry ${frontend} has not been implemented.` );
-        console.log( `I'm sorry ${frontendAppType} has not been implemented.` );
+        console.log( `Building` );
+        //get the path and file of the project and fill in the folder with handbar templates
+        
+    } else if ( frontendAppType !== 'Next' || 'React') {
+        console.log(`I'm sorry but ${frontendAppType} has not been implemented yet.`)
     }
 
     responseData.frontendAppType = frontendAppType;
     await handleResponseChange( responseData );
+
+    
     
 }

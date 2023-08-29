@@ -2,18 +2,26 @@
 
 import { renderTitle } from "./../src/utils/renderTitle"
 import { logger } from "./../src/utils/logger";
+import { newProjectLocation } from "./questions/frontend";
+import { askQuestions, responseData } from "./store";
+import { generatePackageJson } from "./actions";
+
 
 
 process.stdin.resume();
 
+
 const main = async () => {
+  renderTitle();
+  await askQuestions();
 
-    renderTitle();
+  
+  generatePackageJson(responseData.newProjectName, responseData.newProjectLocation)
 
-    console.log("done")
-    process.exit(0)
 
+  process.exit(0);
 }
+
 main().catch((err) => {
   process.on('SIGINT', () => {});  // CTRL+C
   process.on('SIGQUIT', () => {}); // Keyboard quit
