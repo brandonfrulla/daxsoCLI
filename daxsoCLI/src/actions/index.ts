@@ -45,7 +45,7 @@ export const generatePackageJson = async ( data: { [key: string]: any }, targetD
     const result = template( data );
 
     // Save the populated template to a file
-    const outputPath = path.join( targetDirectory, 'package.json' );
+    const outputPath = path.join( targetDirectory + `/${data.newProjectName}`, 'package.json' );
     fs.writeFileSync( outputPath, result );
 
     console.log( 'package.json generated successfully!' );
