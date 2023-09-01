@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { newProjectAuthor, newProjectLocation, newProjectName, newProjectNamePlop, promptFrontend } from './questions/frontend';
+import { newProjectAuthor, newProjectLocation, newProjectName } from './questions/frontend';
 import { promptBlockchain, promptSmartContractERC } from './questions/blockchain';
 
 // Define a type for the response data

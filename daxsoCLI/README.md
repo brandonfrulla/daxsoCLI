@@ -1,6 +1,8 @@
 
 # DaxSo
 
+Welcome to the Developer Acceleration eXperience for Smart Contract Organizations or DAXSO. This is an open-source CLI tool designed to help you start, build and deploy Web3 projects faster with (hopefully) better opinions and smoother developer experience.
+
 DaxSo is a mono-repository powered by Turbo that houses a robust suite of applications and libraries related to blockchain technologies and front-end frameworks. It uses the power of TypeScript for static type-checking and enhanced developer productivity.
 
 ## Structure
@@ -22,31 +24,25 @@ The repository is structured into various applications and packages:
 
 ## Installation
 
-You will need [pnpm](https://pnpm.js.org/) to manage dependencies in this mono-repository. Install it globally:
+This tool was built with pnpm and using pnpx is the preferred way of running it but all your package managers should work. If you run into trouble please open an issue.
 
 ```bash
-npm install -g pnpm
+npm install -g daxso-cli
 ```
 
-Then install the dependencies:
+or
 
 ```bash
-Copy code
-pnpm install
-Running the Apps
+npx daxso-cli
 ```
 
-Navigate into the application directory under templates/apps and use the following command to start the respective app:
+or
 
 ```bash
-Copy code
-pnpm run start
+pnpx daxso-cli
 ```
 
 Contributing
 Contributions to DaxSo are welcome! Please read our contributing guidelines before getting started.
 
-License
-DaxSo is MIT licensed.
-
-Lots of Lorem Ipsum
+License Apache 2.0

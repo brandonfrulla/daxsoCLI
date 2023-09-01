@@ -15,8 +15,12 @@ const main = async () => {
   renderTitle();
   await askQuestions();
 
-  
-  generatePackageJson(responseData.newProjectName, responseData.newProjectLocation)
+  console.log(responseData);
+  console.log(responseData.newProjectLocation);
+  console.log(responseData.newProjectName);
+  const projectRoot = process.cwd() + `/${responseData.newProjectName}`;
+  console.log(projectRoot)
+  generatePackageJson(responseData, responseData.newProjectLocation as string)
 
 
   process.exit(0);
