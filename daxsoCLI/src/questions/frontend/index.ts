@@ -1,7 +1,9 @@
 import { handleResponseChange, responseData } from "../../store";
 import fs from 'fs';
+import handlebars from "handlebars";
 import inquirer from "inquirer";
 import path from 'path';
+import { logger } from "../../utils/logger";
 
 export const newProjectLocation = async (): Promise<void> => {
     //get current working directory
@@ -89,33 +91,33 @@ export const newProjectAuthor = async (): Promise<void> => {
 
 
 export const promptFrontend = async (): Promise<void> => {
-    const { frontendAppType } = await inquirer.prompt<{ frontendAppType: string }>( {
+    const { frontendAppType } = await inquirer.prompt<{ frontendAppType: string }>({
         name: 'frontend',
         type: 'list',
         message: 'What frontend framework will you be using?',
-        choices: ["React", "React-Native", "Next", "Svelte", "Other"],
-        default: 'React',
-    } );
+        choices: ["React", "Next"],
+        default: 'Next',
+    });
 
-    //const contractLanguageString = frontend.toString().replace( / /g, '' ).replace( /,/g, '/' );
-    //triggerAnalytics( 'frontend', contractLanguageString );
-
-    if ( frontendAppType === 'React' ) {
-        //logger.success( `${frontend}` );
-        console.log( `${frontendAppType}` );
-
-    } else if ( frontendAppType ===  'Next') {
-        //logger.error( `I'm sorry ${frontend} has not been implemented.` );
-        console.log( `Building` );
-        //get the path and file of the project and fill in the folder with handbar templates
-        
-    } else if ( frontendAppType !== 'Next' || 'React') {
-        console.log(`I'm sorry but ${frontendAppType} has not been implemented yet.`)
-    }
 
     responseData.frontendAppType = frontendAppType;
-    await handleResponseChange( responseData );
+    await handleResponseChange(responseData);
+}
 
-    
-    
+const gerateNextApp = async () => {
+    const projectRoot = process.cwd();
+    const templatePath = path.join( projectRoot, './../../../templates/apps/frontend-next/frontend-next-app' );
+    const source = fs.readFileSync( templatePath, 'utf-8' );
+
+    // Compile the template with Handlebars
+    const template = handlebars.compile( source );
+
+    // Populate the template with data
+    const result = template( responseData );
+
+    // Save the populated template to a file
+    const outputPath = path.join( responseData.frontendAppType as string + `/${responseData.newProjectName}`, './../../../templates/apps/frontend-next' );
+    fs.writeFileSync( outputPath, result );
+
+    console.log( 'Next.js generated successfully!' );
 }

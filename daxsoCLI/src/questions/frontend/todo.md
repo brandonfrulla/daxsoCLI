@@ -4,8 +4,8 @@
 What is left to do what issues are arising.
 
 - [ ] fs file writing
-- [ ] pasring response.json to handlebars file
-- [ ] solve __dirname issue
+- [x] pasring response.json to handlebars file
+- [x] solve __dirname issue
 - [ ] write ci
 - [ ] unit test
 - [ ] deps check for truffle

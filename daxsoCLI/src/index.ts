@@ -4,7 +4,7 @@ import { renderTitle } from "./../src/utils/renderTitle"
 import { logger } from "./../src/utils/logger";
 import { newProjectLocation } from "./questions/frontend";
 import { askQuestions, responseData } from "./store";
-import { generatePackageJson } from "./actions";
+import { generatePackageJson, generateTemplate } from "./actions";
 
 
 
@@ -13,16 +13,12 @@ process.stdin.resume();
 
 const main = async () => {
   renderTitle();
+  logger.info('Starting new project...');
+
   await askQuestions();
 
-  console.log('RESPONSE: '+ responseData);
-  console.log('responseData.newProjectLocation: ' + responseData.newProjectLocation);
-  console.log('responseData.newProjectName: ' + responseData.newProjectName);
-  const projectRoot = process.cwd() + `/${responseData.newProjectName}`;
-  console.log('PRJROOT: '+ projectRoot);
   generatePackageJson(responseData, responseData.newProjectLocation as string)
-
-
+  generateTemplate(responseData, responseData.frontendAppType as string)
   process.exit(0);
 }
 

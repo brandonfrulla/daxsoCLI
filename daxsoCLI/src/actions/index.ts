@@ -1,28 +1,9 @@
-import { ResponseData } from '../store'; // adjust path to your store file
+import { ResponseData, responseData } from '../store'; // adjust path to your store file
 
 import fs from 'fs';
 import handlebars from 'handlebars';
 import path from 'path';
 
-
-const createFrontendApp = ( responseData: ResponseData, newProjectLocation: string ) => {
-  if ( responseData.frontendAppType === 'react' ) {
-    return {
-      type: 'shell',
-      command: 'npx create-vite frontend --template react-ts',
-      cwd: `${newProjectLocation}/apps/frontend`,
-    };
-  }
-  if ( responseData.frontendAppType === 'svelte' ) {
-    return {
-      type: 'shell',
-      command: 'echo "svelte"',
-      cwd: `${newProjectLocation}/apps/frontend`,
-    };
-  }
-
-  return null;
-};
 
 
 export const generatePackageJson = async ( data: { [key: string]: any }, targetDirectory: string, ) => {
@@ -55,5 +36,27 @@ export const generatePackageJson = async ( data: { [key: string]: any }, targetD
 
 }
 
+export const generateTemplate = async ( data: { [key: string]: any }, targetDirectory: string, ) => {
+  if (typeof targetDirectory !== 'string') {
+    console.log( 'Target directory must be a string!' );
+    return;
+  }
 
-  export default createFrontendApp;
+  if (data.frontendAppType === "Next") {
+    const projectRoot = process.cwd();
+    const templatePath = path.join( projectRoot, './../../../templates/apps/frontend-next/frontend-next-app' );
+    const source = fs.readFileSync( templatePath, 'utf-8' );
+
+    // Compile the template with Handlebars
+    const template = handlebars.compile( source );
+
+    // Populate the template with data
+    const result = template( responseData );
+
+    // Save the populated template to a file
+    const outputPath = path.join( responseData.frontendAppType as string + `/${responseData.newProjectName}`, './../../../templates/apps/frontend-next' );
+    fs.writeFileSync( outputPath, result );
+
+    console.log( 'Next.js generated successfully!' );
+  }
+}
