@@ -47,7 +47,7 @@ export const generateTemplate = async ( data: { [key: string]: any }, targetDire
         const projectRoot = process.cwd();
         const templatePath = path.join(projectRoot, './templates/apps/frontend-next/frontend-next-app');
 
-        const outputPath = path.join(projectRoot, `${responseData.frontendAppType as string}/${responseData.newProjectName as string}/frontend-next-app`);
+        const outputPath = path.join(projectRoot, `./${responseData.newProjectName as string}/frontend-next-app`);
 
         // Ensure the output directory exists, if not, it will create it
         fs.ensureDirSync(outputPath);
