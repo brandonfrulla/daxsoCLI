@@ -1,6 +1,6 @@
 import { ResponseData, responseData } from '../store'; // adjust path to your store file
 
-import fs from 'fs';
+import fs from 'fs-extra';
 import handlebars from 'handlebars';
 import path from 'path';
 
@@ -38,27 +38,28 @@ export const generatePackageJson = async ( data: { [key: string]: any }, targetD
 
 export const generateTemplate = async ( data: { [key: string]: any }, targetDirectory: string, ) => {
   if (typeof targetDirectory !== 'string') {
-    console.log( 'Target directory must be a string!' );
+    console.log( 'Target directory for frontend template generation must be a string!' );
     return;
   }
 
   if (data.newFrontendAppType === "Next") {
-    const projectRoot = process.cwd();
-    const templatePath = path.join( projectRoot, './../../../templates/apps/frontend-next/frontend-next-app' );
-    const source = fs.readFileSync( templatePath, 'utf-8' );
+    try {
+        const projectRoot = process.cwd();
+        const templatePath = path.join(projectRoot, './templates/apps/frontend-next/frontend-next-app');
 
-    // Compile the template with Handlebars
-    const template = handlebars.compile( source );
+        const outputPath = path.join(projectRoot, `${responseData.frontendAppType as string}/${responseData.newProjectName as string}/frontend-next-app`);
 
-    // Populate the template with data
-    const result = template( responseData );
+        // Ensure the output directory exists, if not, it will create it
+        fs.ensureDirSync(outputPath);
 
-    // Save the populated template to a file
-    const outputPath = path.join( responseData.frontendAppType as string + `/${responseData.newProjectName}`, './../../../templates/apps/frontend-next' );
-    fs.writeFileSync( outputPath, result );
+        // Copy all files from the templatePath to the outputPath
+        fs.copySync(templatePath, outputPath);
 
-    console.log( 'Next.js generated successfully!' );
-  }
+        console.log('Next.js templates copied successfully!');
+    } catch (error) {
+        console.error('Error during copy operation:', error);
+    }
+}
   if (data.newFrontendAppType === "React") {
     const projectRoot = process.cwd();
     const templatePath = path.join( projectRoot, './../../../templates/apps/frontend-react/frontend-react-app' );
@@ -80,7 +81,7 @@ export const generateTemplate = async ( data: { [key: string]: any }, targetDire
 
 export const generateSmartContract = async ( data: { [key: string]: any }, targetDirectory: string, ) => {
   if (typeof targetDirectory !== 'string') {
-    console.log( 'Target directory must be a string!' );
+    console.log( 'Target directory for Smart Contract generation must be a string!' );
     return;
   }
 

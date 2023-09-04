@@ -92,7 +92,7 @@ export const newProjectAuthor = async (): Promise<void> => {
 
 export const newFrontendAppType = async (): Promise<void> => {
     const { newFrontendAppType } = await inquirer.prompt<{ newFrontendAppType: string }>({
-        name: 'frontend',
+        name: 'newFrontendAppType',
         type: 'list',
         message: 'What frontend framework will you be using?',
         choices: ["Next"],

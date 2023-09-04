@@ -2,9 +2,8 @@
 
 import { renderTitle } from "./../src/utils/renderTitle"
 import { logger } from "./../src/utils/logger";
-import { newProjectLocation } from "./questions/frontend";
 import { askQuestions, responseData } from "./store";
-import { generatePackageJson, generateTemplate } from "./actions";
+import { generatePackageJson, generateSmartContract, generateTemplate } from "./actions";
 
 
 
@@ -18,7 +17,8 @@ const main = async () => {
   await askQuestions();
 
   generatePackageJson(responseData, responseData.newProjectLocation as string)
-  //generateTemplate(responseData, responseData.frontendAppType as string)
+  generateTemplate(responseData, responseData.newFrontendAppType as string)
+  generateSmartContract(responseData, responseData.smartContractERC as string)
   process.exit(0);
 }
 
