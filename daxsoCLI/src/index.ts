@@ -18,7 +18,7 @@ const main = async () => {
   await askQuestions();
 
   generatePackageJson(responseData, responseData.newProjectLocation as string)
-  generateTemplate(responseData, responseData.frontendAppType as string)
+  //generateTemplate(responseData, responseData.frontendAppType as string)
   process.exit(0);
 }
 

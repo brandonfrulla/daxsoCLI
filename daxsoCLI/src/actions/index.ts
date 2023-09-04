@@ -42,7 +42,7 @@ export const generateTemplate = async ( data: { [key: string]: any }, targetDire
     return;
   }
 
-  if (data.frontendAppType === "Next") {
+  if (data.newFrontendAppType === "Next") {
     const projectRoot = process.cwd();
     const templatePath = path.join( projectRoot, './../../../templates/apps/frontend-next/frontend-next-app' );
     const source = fs.readFileSync( templatePath, 'utf-8' );
@@ -59,4 +59,66 @@ export const generateTemplate = async ( data: { [key: string]: any }, targetDire
 
     console.log( 'Next.js generated successfully!' );
   }
+  if (data.newFrontendAppType === "React") {
+    const projectRoot = process.cwd();
+    const templatePath = path.join( projectRoot, './../../../templates/apps/frontend-react/frontend-react-app' );
+    const source = fs.readFileSync( templatePath, 'utf-8' );
+
+    // Compile the template with Handlebars
+    const template = handlebars.compile( source );
+
+    // Populate the template with data
+    const result = template( responseData );
+
+    // Save the populated template to a file
+    const outputPath = path.join( responseData.frontendAppType as string + `/${responseData.newProjectName}`, './../../../templates/apps/frontend-react' );
+    fs.writeFileSync( outputPath, result );
+
+    console.log( 'React.js generated successfully!' );
+  }
+}
+
+export const generateSmartContract = async ( data: { [key: string]: any }, targetDirectory: string, ) => {
+  if (typeof targetDirectory !== 'string') {
+    console.log( 'Target directory must be a string!' );
+    return;
+  }
+
+  if (data.smartContractERC === "ERC20") {
+    const projectRoot = process.cwd();
+    const templatePath = path.join( projectRoot, './../../templates/apps/blockchain/contracts/ERC20.sol' );
+    const source = fs.readFileSync( templatePath, 'utf-8' );
+
+    // Compile the template with Handlebars
+    const template = handlebars.compile( source );
+
+    // Populate the template with data
+    const result = template( responseData );
+
+    // Save the populated template to a file
+    const outputPath = path.join( responseData.smartContractERC as string + `/${responseData.newProjectName}`, './../../../templates/smart-contracts/erc20' );
+    fs.writeFileSync( outputPath, result );
+
+    console.log( 'ERC20 generated successfully!' );
+  }
+
+  if (data.smartContractERC === 'ERC721') {
+    const projectRoot = process.cwd();
+    const templatePath = path.join( projectRoot, './../../templates/apps/blockchain/contracts/ERC721.sol' );
+    const source = fs.readFileSync( templatePath, 'utf-8' );
+
+    // Compile the template with Handlebars
+    const template = handlebars.compile( source );
+
+    // Populate the template with data
+    const result = template( responseData );
+
+    // Save the populated template to a file
+    const outputPath = path.join( responseData.smartContractERC as string + `/${responseData.newProjectName}`, './../../../templates/smart-contracts/erc721' );
+    fs.writeFileSync( outputPath, result );
+
+    console.log( 'ERC721 generated successfully!' );
+  }
+
+
 }

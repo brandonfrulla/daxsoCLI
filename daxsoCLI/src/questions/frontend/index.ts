@@ -90,17 +90,19 @@ export const newProjectAuthor = async (): Promise<void> => {
 }
 
 
-export const promptFrontend = async (): Promise<void> => {
-    const { frontendAppType } = await inquirer.prompt<{ frontendAppType: string }>({
+export const newFrontendAppType = async (): Promise<void> => {
+    const { newFrontendAppType } = await inquirer.prompt<{ newFrontendAppType: string }>({
         name: 'frontend',
         type: 'list',
         message: 'What frontend framework will you be using?',
-        choices: ["React", "Next"],
+        choices: ["Next"],
         default: 'Next',
     });
 
+    logger.info(`You chose ${newFrontendAppType} as your frontend framework.`);
 
-    responseData.frontendAppType = frontendAppType;
+    responseData.newFrontendAppType = newFrontendAppType;
+
     await handleResponseChange(responseData);
 }
 
