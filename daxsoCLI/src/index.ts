@@ -18,7 +18,7 @@ const main = async () => {
 
   generatePackageJson(responseData, responseData.newProjectLocation as string)
   generateTemplate(responseData, responseData.newFrontendAppType as string)
-  generateSmartContract(responseData, responseData.smartContractERC as string)
+  generateSmartContract(responseData, responseData.newSmartContractERC as string)
   process.exit(0);
 }
 

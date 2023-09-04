@@ -1,6 +1,6 @@
 import fs from 'fs';
 import { newFrontendAppType, newProjectAuthor, newProjectLocation, newProjectName } from './questions/frontend';
-import { promptBlockchain, promptSmartContractERC } from './questions/blockchain';
+import { newSmartContractERC, promptBlockchain } from './questions/blockchain';
 
 // Define a type for the response data
 export type ResponseData = Record<string, unknown>;
@@ -38,7 +38,7 @@ export const questionFunctions: Array<() => Promise<void>> = [
   newProjectAuthor,
   newFrontendAppType,
   promptBlockchain,
-  promptSmartContractERC,
+  newSmartContractERC,
 
 ];
 

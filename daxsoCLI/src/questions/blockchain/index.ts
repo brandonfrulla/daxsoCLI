@@ -29,24 +29,19 @@ export const promptBlockchain = async (): Promise<void> => {
 };
 
 
-export const promptSmartContractERC = async (): Promise<void> => {
-    const { smartContractERC } = await inquirer.prompt<{ smartContractERC: string }>( {
-        name: 'smartContractERC',
+export const newSmartContractERC = async (): Promise<void> => {
+    const { newSmartContractERC } = await inquirer.prompt<{ newSmartContractERC: string }>( {
+        name: 'newSmartContractERC',
         type: 'list',
         message: 'What type of smart contract will you be using?',
-        choices: ["Erc20", "Erc721", "Erc777", "Erc1155", "Erc4626"],
-        default: 'Solidity',
+        choices: ["ERC20", "ERC721"],
+        default: 'ERC20',
     } );
 
     //const contractLanguageString = smartContractERC.toString().replace( / /g, '' ).replace( /,/g, '/' );
     //triggerAnalytics( 'smartContractERC', contractLanguageString );
 
-    if ( smartContractERC === smartContractERC[0] ) {
-        logger.success( 'You chose correctly' );
-
-    }
-
-    responseData.smartContractERC = smartContractERC;
+    responseData.newSmartContractERC = newSmartContractERC;
     await handleResponseChange( responseData );
 
 };
