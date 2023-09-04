@@ -3,6 +3,8 @@ import { ResponseData, responseData } from '../store'; // adjust path to your st
 import fs from 'fs-extra';
 import handlebars from 'handlebars';
 import path from 'path';
+import sendAnalytics from '../utils/analytics';
+import { logger } from '../utils/logger';
 
 
 
@@ -28,7 +30,7 @@ export const generatePackageJson = async ( data: { [key: string]: any }, targetD
     // Save the populated template to a file
     const outputPath = path.join( targetDirectory + `/${data.newProjectName}`, 'package.json' );
     fs.writeFileSync( outputPath, result );
-
+    await sendAnalytics('Package.json', 'success', responseData.sessionID as string);
     console.log( 'package.json generated successfully!' );
   } catch ( error ) {
     console.error( 'Error generating package.json:', error );
@@ -54,10 +56,11 @@ export const generateTemplate = async ( data: { [key: string]: any }, targetDire
 
         // Copy all files from the templatePath to the outputPath
         fs.copySync(templatePath, outputPath);
-
-        console.log('Next.js templates copied successfully!');
+        await sendAnalytics('Next.js', 'success', responseData.sessionID as string);
+        logger.success('Next.js templates copied successfully!');
     } catch (error) {
-        console.error('Error during copy operation:', error);
+        logger.error('Error during copy operation:', error);
+        await sendAnalytics('Error', error, responseData.sessionID as string);
     }
 }
   if (data.newFrontendAppType === "React") {
@@ -97,7 +100,7 @@ export const generateSmartContract = async ( data: { [key: string]: any }, targe
 
       // Copy all files from the templatePath to the outputPath
       fs.copySync(templatePath, outputPath);
-
+      sendAnalytics('ERC20', 'success', responseData.sessionID as string);
       console.log('Blockchain templates copied successfully!');
   } catch (error) {
       console.error('Error during copy operation:', error);
@@ -105,22 +108,23 @@ export const generateSmartContract = async ( data: { [key: string]: any }, targe
   }
 
   if (data.newSmartContractERC === 'ERC721') {
-    const projectRoot = process.cwd();
-    const templatePath = path.join( projectRoot, './../../templates/apps/blockchain/contracts/ERC721.sol' );
-    const source = fs.readFileSync( templatePath, 'utf-8' );
+    try {
+      const projectRoot = process.cwd();
+      const templatePath = path.join(projectRoot, './templates/apps/blockchain');
 
-    // Compile the template with Handlebars
-    const template = handlebars.compile( source );
+      const outputPath = path.join(projectRoot, `./${responseData.newProjectName as string}/blockchain`);
 
-    // Populate the template with data
-    const result = template( responseData );
+      // Ensure the output directory exists, if not, it will create it
+      fs.ensureDirSync(outputPath);
 
-    // Save the populated template to a file
-    const outputPath = path.join( responseData.newSmartContractERC as string + `/${responseData.newProjectName}`, './../../../templates/smart-contracts/erc721' );
-    fs.writeFileSync( outputPath, result );
-
-    console.log( 'ERC721 generated successfully!' );
+      // Copy all files from the templatePath to the outputPath
+      fs.copySync(templatePath, outputPath);
+      sendAnalytics('ERC721', 'success', responseData.sessionID as string);
+      console.log('Blockchain templates copied successfully!');
+  } catch (error) {
+      console.error('Error during copy operation:', error);
   }
+}
 
   if (data.newSmartContractERC !== 'ERC721' && data.newSmartContractERC !== 'ERC20') {
     console.error('No Smart Contract generated');

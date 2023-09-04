@@ -1,6 +1,8 @@
 import inquirer from "inquirer";
 import { responseData, handleResponseChange } from "../../store";
 import { logger } from "../../utils/logger";
+import sendAnalytics from "../../utils/analytics";
+
 
 export const promptBlockchain = async (): Promise<void> => {
     const { blockchain } = await inquirer.prompt<{ blockchain: string }>( {
@@ -24,7 +26,7 @@ export const promptBlockchain = async (): Promise<void> => {
     responseData.blockchain = blockchain;
     await handleResponseChange( responseData );
 
-    
+    await sendAnalytics( 'Blockchain Type', blockchain, responseData.sessionID as string );
     
 };
 
@@ -43,5 +45,7 @@ export const newSmartContractERC = async (): Promise<void> => {
 
     responseData.newSmartContractERC = newSmartContractERC;
     await handleResponseChange( responseData );
+
+    await sendAnalytics( 'Smart Contract Type', newSmartContractERC, responseData.sessionID as string );
 
 };
