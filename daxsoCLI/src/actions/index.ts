@@ -82,28 +82,29 @@ export const generateTemplate = async ( data: { [key: string]: any }, targetDire
 export const generateSmartContract = async ( data: { [key: string]: any }, targetDirectory: string, ) => {
   if (typeof targetDirectory !== 'string') {
     console.log( 'Target directory for Smart Contract generation must be a string!' );
-    return;
+    return console.error(targetDirectory);
   }
 
-  if (data.smartContractERC === "ERC20") {
-    const projectRoot = process.cwd();
-    const templatePath = path.join( projectRoot, './../../templates/apps/blockchain/contracts/ERC20.sol' );
-    const source = fs.readFileSync( templatePath, 'utf-8' );
+  if (data.newSmartContractERC === "ERC20") {
+    try {
+      const projectRoot = process.cwd();
+      const templatePath = path.join(projectRoot, './templates/apps/blockchain');
 
-    // Compile the template with Handlebars
-    const template = handlebars.compile( source );
+      const outputPath = path.join(projectRoot, `./${responseData.newProjectName as string}/blockchain`);
 
-    // Populate the template with data
-    const result = template( responseData );
+      // Ensure the output directory exists, if not, it will create it
+      fs.ensureDirSync(outputPath);
 
-    // Save the populated template to a file
-    const outputPath = path.join( responseData.smartContractERC as string + `/${responseData.newProjectName}`, './../../../templates/smart-contracts/erc20' );
-    fs.writeFileSync( outputPath, result );
+      // Copy all files from the templatePath to the outputPath
+      fs.copySync(templatePath, outputPath);
 
-    console.log( 'ERC20 generated successfully!' );
+      console.log('Blockchain templates copied successfully!');
+  } catch (error) {
+      console.error('Error during copy operation:', error);
+  }
   }
 
-  if (data.smartContractERC === 'ERC721') {
+  if (data.newSmartContractERC === 'ERC721') {
     const projectRoot = process.cwd();
     const templatePath = path.join( projectRoot, './../../templates/apps/blockchain/contracts/ERC721.sol' );
     const source = fs.readFileSync( templatePath, 'utf-8' );
@@ -115,11 +116,14 @@ export const generateSmartContract = async ( data: { [key: string]: any }, targe
     const result = template( responseData );
 
     // Save the populated template to a file
-    const outputPath = path.join( responseData.smartContractERC as string + `/${responseData.newProjectName}`, './../../../templates/smart-contracts/erc721' );
+    const outputPath = path.join( responseData.newSmartContractERC as string + `/${responseData.newProjectName}`, './../../../templates/smart-contracts/erc721' );
     fs.writeFileSync( outputPath, result );
 
     console.log( 'ERC721 generated successfully!' );
   }
 
+  if (data.newSmartContractERC !== 'ERC721' && data.newSmartContractERC !== 'ERC20') {
+    console.error('No Smart Contract generated');
+  }
 
 }
