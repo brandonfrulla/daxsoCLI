@@ -3,28 +3,25 @@
 import { renderTitle } from "./../src/utils/renderTitle"
 import { logger } from "./../src/utils/logger";
 import { askQuestions, responseData } from "./store";
-import createFileStruct from "../plopfile";
-import { NodePlopAPI } from 'plop';
-import nodePlop from 'node-plop';
+import { generatePackageJson, generateSmartContract, generateTemplate } from "./actions";
 
-const plop = nodePlop();
+
 
 process.stdin.resume();
 
+
 const main = async () => {
-//triggerAnalytics('start', 'started');
+  renderTitle();
+  logger.info('Starting new project...');
 
-    renderTitle();
-    //triggerAnalytics('renderTitle', 'title');
-    //buildPkgInstallerMap(["devTest", "devTest2"])
-    await askQuestions();
-    await createFileStruct(await plop);
-    console.log("done")
+  await askQuestions();
 
-    //read the contents of response.json and write to .env
-
-    
+  generatePackageJson(responseData, responseData.newProjectLocation as string)
+  generateTemplate(responseData, responseData.newFrontendAppType as string)
+  generateSmartContract(responseData, responseData.smartContractERC as string)
+  process.exit(0);
 }
+
 main().catch((err) => {
   process.on('SIGINT', () => {});  // CTRL+C
   process.on('SIGQUIT', () => {}); // Keyboard quit

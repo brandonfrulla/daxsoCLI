@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { newProjectAuthor, newProjectLocationQuestion, newProjectName, promptFrontend } from './questions/frontend';
+import { newFrontendAppType, newProjectAuthor, newProjectLocation, newProjectName } from './questions/frontend';
 import { promptBlockchain, promptSmartContractERC } from './questions/blockchain';
 
 // Define a type for the response data
@@ -33,19 +33,22 @@ const writeToFile = ( data: ResponseData ) => {
 export const questionFunctions: Array<() => Promise<void>> = [
 
   // Question 1
-  newProjectLocationQuestion,
-  newProjectAuthor,
-  promptFrontend,
+  newProjectLocation,
   newProjectName,
+  newProjectAuthor,
+  newFrontendAppType,
   promptBlockchain,
   promptSmartContractERC,
-
 
 ];
 
 // Define a function to trigger the question prompts
 export const askQuestions = async (): Promise<void> => {
-  for ( const question of questionFunctions ) {
-    await question();
+  try {
+    for (const question of questionFunctions) {
+      await question();
+    }
+  } catch (error) {
+    console.error("Error while asking questions:", error);
   }
 };

@@ -1,3 +1,5 @@
+import { handleResponseChange, responseData } from "../store";
+
 export type PackageManager = "npm" | "pnpm" | "yarn";
 
 export const getUserPkgManager: () => PackageManager = () => {
@@ -17,3 +19,19 @@ export const getUserPkgManager: () => PackageManager = () => {
     return "npm";
   }
 };
+
+const getPlatform = async () => {
+  const platform = process.platform;
+
+  if (platform === "win32") {
+    return "win";
+  } else if (platform === "darwin") {
+    return "mac";
+  } else {
+    return "linux";
+  }
+
+  responseData.platform = platform;
+  await handleResponseChange( responseData );
+
+}

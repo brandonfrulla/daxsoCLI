@@ -7,7 +7,7 @@ export const promptBlockchain = async (): Promise<void> => {
         name: 'blockchain',
         type: 'list',
         message: 'What blockchain will you be using?',
-        choices: ["Ethereum", "Polygon", "Binance Smart Chain", "Solana", "Avalanche", "Fantom", "Harmony", "Near", "Celo", "Moonbeam", "xDai", "Arbitrum", "Optimism", "Klaytn", "Tron", "Waves", "Tezos", "Algorand", "Cosmos", "Polkadot", "Kusama", "Cardano", "Flow", "Stellar", "Nervos", "NEO", "EOS", "Wanchain", "VeChain", "Ontology", "Elrond", "Mina", "Coda", "Filecoin", "Skale", "Casper", "Corda", "Hyperledger Besu", "Hyperledger Fabric", "Quorum", "R3 Corda", "Tendermint", "Other"],
+        choices: ["Ethereum" ],
         default: 'Ethereum',
     } );
 
@@ -23,6 +23,8 @@ export const promptBlockchain = async (): Promise<void> => {
 
     responseData.blockchain = blockchain;
     await handleResponseChange( responseData );
+
+    
     
 };
 
