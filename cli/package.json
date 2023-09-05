@@ -5,6 +5,7 @@
   "license": "Apache-2.0",
   "type": "module",
   "scripts": {
+    "test": "jest",
     "start": "node dist/index.js",
     "dev": "tsup src/index.ts --watch",
     "build": "tsup src/index.ts --dts --format cjs,esm --clean --sourcemap"
@@ -28,6 +29,11 @@
     "tsup": "^7.1.0"
   },
   "devDependencies": {
-    "@types/fs-extra": "^11.0.1"
+    "@babel/preset-env": "^7.22.15",
+    "@types/fs-extra": "^11.0.1",
+    "@types/jest": "^29.5.4",
+    "babel-jest": "^29.6.4",
+    "jest": "^29.6.4",
+    "ts-jest": "^29.1.1"
   }
 }

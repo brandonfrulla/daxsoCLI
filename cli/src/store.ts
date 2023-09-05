@@ -1,6 +1,6 @@
 import fs from 'fs';
-import { newFrontendAppType, newProjectAuthor, newProjectLocation, newProjectName } from './questions/frontend/index.js';
-import { newSmartContractERC, promptBlockchain } from './questions/blockchain/index.js';
+import { newFrontendAppType, newProjectAuthor, newProjectLocation, newProjectName } from './questions/frontend/index.ts';
+import { newSmartContractERC, promptBlockchain } from './questions/blockchain/index.ts';
 
 // Define a type for the response data
 export type ResponseData = Record<string, unknown>;
@@ -18,15 +18,6 @@ export const handleResponseChange = ( data: ResponseData ) => {
 
     console.log( 'Responses saved to response.json' );
   }
-};
-
-//write funtion that writes to file
-const writeToFile = ( data: ResponseData ) => {
-  // Generate a JSON file with the response data
-  const json = JSON.stringify( data );
-  fs.writeFileSync( 'response.json', json );
-
-  console.log( 'Responses saved to response.json' );
 };
 
 // Define an array of question functions

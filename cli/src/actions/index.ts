@@ -1,8 +1,9 @@
-import { responseData } from '../store.js'; // adjust path to your store file
+import { responseData } from '../store.ts'; // adjust path to your store file
 
 import fs from 'fs-extra';
 import handlebars from 'handlebars';
 import path from 'path';
+import { PKG_ROOT } from '~/utils/renderTitle.ts';
 
 
 
@@ -14,9 +15,7 @@ export const generatePackageJson = async ( data: { [key: string]: any }, targetD
 
   try {
     // Use a relative path from the project root (assuming you execute the script from the project root)
-    const projectRoot = process.cwd();
-    console.log(projectRoot)
-    const templatePath = path.join( projectRoot, './src/plopTemps/next-app/package.json.hbs' );
+    const templatePath = path.join( PKG_ROOT, './src/plopTemps/next-app/package.json.hbs' );
     const source = fs.readFileSync( templatePath, 'utf-8' );
 
     // Compile the template with Handlebars
@@ -44,10 +43,9 @@ export const generateTemplate = async ( data: { [key: string]: any }, targetDire
 
   if (data.newFrontendAppType === "Next") {
     try {
-        const projectRoot = process.cwd();
-        const templatePath = path.join(projectRoot, './templates/apps/frontend-next/frontend-next-app');
+        const templatePath = path.join(PKG_ROOT, './templates/apps/frontend-next/frontend-next-app');
 
-        const outputPath = path.join(projectRoot, `./${responseData.newProjectName as string}/frontend-next-app`);
+        const outputPath = path.join(PKG_ROOT, `./${responseData.newProjectName as string}/frontend-next-app`);
 
         // Ensure the output directory exists, if not, it will create it
         fs.ensureDirSync(outputPath);
@@ -61,8 +59,7 @@ export const generateTemplate = async ( data: { [key: string]: any }, targetDire
     }
 }
   if (data.newFrontendAppType === "React") {
-    const projectRoot = process.cwd();
-    const templatePath = path.join( projectRoot, './../../../templates/apps/frontend-react/frontend-react-app' );
+    const templatePath = path.join( PKG_ROOT, './../../../templates/apps/frontend-react/frontend-react-app' );
     const source = fs.readFileSync( templatePath, 'utf-8' );
 
     // Compile the template with Handlebars
@@ -87,10 +84,9 @@ export const generateSmartContract = async ( data: { [key: string]: any }, targe
 
   if (data.newSmartContractERC === "ERC20") {
     try {
-      const projectRoot = process.cwd();
-      const templatePath = path.join(projectRoot, './templates/apps/blockchain');
+      const templatePath = path.join(PKG_ROOT, './templates/apps/blockchain');
 
-      const outputPath = path.join(projectRoot, `./${responseData.newProjectName as string}/blockchain`);
+      const outputPath = path.join(PKG_ROOT, `./${responseData.newProjectName as string}/blockchain`);
 
       // Ensure the output directory exists, if not, it will create it
       fs.ensureDirSync(outputPath);
@@ -105,8 +101,7 @@ export const generateSmartContract = async ( data: { [key: string]: any }, targe
   }
 
   if (data.newSmartContractERC === 'ERC721') {
-    const projectRoot = process.cwd();
-    const templatePath = path.join( projectRoot, './../../templates/apps/blockchain/contracts/ERC721.sol' );
+    const templatePath = path.join( PKG_ROOT, './../../templates/apps/blockchain/contracts/ERC721.sol' );
     const source = fs.readFileSync( templatePath, 'utf-8' );
 
     // Compile the template with Handlebars

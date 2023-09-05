@@ -1,9 +1,8 @@
-import { handleResponseChange, responseData } from "../../store.js";
+import { handleResponseChange, responseData } from "../../store.ts";
 import fs from 'fs';
-import handlebars from "handlebars";
 import inquirer from "inquirer";
 import path from 'path';
-import { logger } from "../../utils/logger.js";
+import { logger } from "../../utils/logger.ts";
 
 export const newProjectLocation = async (): Promise<void> => {
     //get current working directory
@@ -104,22 +103,4 @@ export const newFrontendAppType = async (): Promise<void> => {
     responseData.newFrontendAppType = newFrontendAppType;
 
     await handleResponseChange(responseData);
-}
-
-const gerateNextApp = async () => {
-    const projectRoot = process.cwd();
-    const templatePath = path.join( projectRoot, './../../../templates/apps/frontend-next/frontend-next-app' );
-    const source = fs.readFileSync( templatePath, 'utf-8' );
-
-    // Compile the template with Handlebars
-    const template = handlebars.compile( source );
-
-    // Populate the template with data
-    const result = template( responseData );
-
-    // Save the populated template to a file
-    const outputPath = path.join( responseData.frontendAppType as string + `/${responseData.newProjectName}`, './../../../templates/apps/frontend-next' );
-    fs.writeFileSync( outputPath, result );
-
-    console.log( 'Next.js generated successfully!' );
 }
