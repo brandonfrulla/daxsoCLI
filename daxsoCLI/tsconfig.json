@@ -40,6 +40,7 @@
     /* OTHER OPTIONS */
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
+    "allowImportingTsExtensions": true,
     // "emitDecoratorMetadata": true,
     // "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,

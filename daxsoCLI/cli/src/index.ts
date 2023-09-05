@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-import { renderTitle } from "./../src/utils/renderTitle"
-import { logger } from "./../src/utils/logger";
-import { askQuestions, responseData } from "./store";
-import { generatePackageJson, generateSmartContract, generateTemplate } from "./actions";
+import { renderTitle } from "./../src/utils/renderTitle.js"
+import { logger } from "./../src/utils/logger.js";
+import { askQuestions, responseData } from "./store.js";
+import { generatePackageJson, generateSmartContract, generateTemplate } from "./actions/index.js";
 
 
 
