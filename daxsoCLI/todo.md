@@ -1,7 +1,8 @@
 # To Do
 
 - [ ] Update Readme
-  - [ ] DOD - able to clone, build and run project without help, 2) ability to see/run the project that is generated with out.
+  -  DOD 
+  - [ ] able to clone, build and run project without help, 2) ability to see/run the project that is generated with out.
   - [ ] TB: 90min
 - [ ] Work on Monorepo sorted for move over to Consensys
   - [ ] DOD:
@@ -10,4 +11,5 @@
   - [ ] the system runs on npm, github, and vercel
   - [ ] confident engough to delete other repos
   - [ ] Rewrite env and keys for enterprise (infinscal?)
-  - [ ] 
+- TB: Days
+- 
