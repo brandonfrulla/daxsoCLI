@@ -1,0 +1,111 @@
+import { type Config } from "tailwindcss";
+
+export default {
+  content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        default: "rgb(var(--color-default) / <alpha-value>)",
+        neutral: "rgb(var(--color-neutral) / <alpha-value>)",
+        primary: "rgb(var(--color-primary) / <alpha-value>)",
+        secondary: "rgb(var(--color-secondary) / <alpha-value>)",
+        accent: "rgb(var(--color-accent) / <alpha-value>)",
+        warning: "rgb(var(--color-warning) / <alpha-value>)",
+        error: "rgb(var(--color-error) / <alpha-value>)",
+        success: "rgb(var(--color-success) / <alpha-value>)",
+        info: "rgb(var(--color-info) / <alpha-value>)",
+
+        "t3-purple-50": "#FEECE8",
+        "t3-purple-100": "#FDDDD4",
+        "t3-purple-200": "#FBBEAD",
+        "t3-purple-300": "#F99F87",
+        "t3-purple-400": "#F78060",
+        "t3-purple-500": "#F56139",
+        "t3-purple-600": "#F34212",
+        "t3-purple-700": "#D6360B",
+        "t3-purple-800": "#B42E09",
+        "t3-purple-900": "#922507",
+        "t3-purple-1000": "#812107",
+
+        'pomegranate':
+        {
+          DEFAULT: '#F34212',
+          50: '#FEECE8',
+          100: '#FDDDD4',
+          200: '#FBBEAD',
+          300: '#F99F87',
+          400: '#F78060',
+          500: '#F56139',
+          600: '#F34212',
+          700: '#D6360B',
+          800: '#B42E09',
+          900: '#922507',
+          950: '#812107'
+
+        },
+        'cerise-red': { 
+          DEFAULT: '#E53E5E',
+          50: '#F5B7C3',
+          100: '#F4AAB8',
+          200: '#F08FA1',
+          300: '#EC748B',
+          400: '#E95974',
+          500: '#E53E5E',
+          600: '#D81D41',
+          700: '#B01835',
+          800: '#871229',
+          900: '#5F0D1C',
+          950: '#4A0A16' },
+
+      },
+
+    },
+    fontFamily: {
+      sans: [
+        "TT Norms Pro",
+        '"InterVariable"',
+        "ui-sans-serif",
+        "system-ui",
+        "-apple-system",
+        "BlinkMacSystemFont",
+        '"Segoe UI"',
+        "Roboto",
+        '"Helvetica Neue"',
+        "Arial",
+        '"Noto Sans"',
+        "sans-serif",
+        '"Apple Color Emoji"',
+        '"Segoe UI Emoji"',
+        '"Segoe UI Symbol"',
+        '"Noto Color Emoji"',
+      ],
+      serif: ["ui-serif", "Georgia"],
+      mono: [
+        '"JetBrains Mono"',
+        "monospace",
+        "ui-monospace",
+        "Menlo",
+        "Monaco",
+        '"Cascadia Mono"',
+        '"Segoe UI Mono"',
+        '"Roboto Mono"',
+        '"Oxygen Mono"',
+        '"Ubuntu Monospace"',
+        '"Source Code Pro"',
+        '"Fira Mono"',
+        '"Droid Sans Mono"',
+        '"Courier New"',
+      ],
+      cera: [
+        '"Cera Pro"',
+        '"Cera Pro Medium"',
+        '"Cera Pro Bold"',
+        '"Cera Pro Black"',
+        '"Cera Pro ExtraBold"',
+      ],
+    },
+  },
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  plugins: [require( "tailwind-scrollbar" )( { nocompatible: true } )],
+} satisfies Config;

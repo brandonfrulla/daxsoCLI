@@ -1,0 +1,70 @@
+---
+import CliPreview from "./cli";
+import PageSection from "./pageSection.astro";
+---
+
+<PageSection
+  className="grid grid-cols-1 xl:grid-cols-2 gap-8 items-center mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8 lg:grid lg:gap-x-8 xl:gap-x-12"
+  size={"24"}
+  id="about"
+>
+  <div class="mx-auto flex max-w-[800px] flex-col gap-2 md:gap-4 xl:max-w-full bg-gradient-to-br from-[#]">
+    <h2
+      class="mb-0 w-full text-3xl font-bold text-t3-purple-50 md:text-5xl lg:text-5xl"
+    >
+      Level up your Developer Experience
+    </h2>
+    <h3 class="text-xl mb-2">
+      with the Developer Acceleration eXperience for Smart-contract Organizations.
+    </h3>
+    <p
+      class="mx-auto mt-4 max-w-3xl text-base text-t3-purple-200 md:text-xl lg:text-xl xl:text-xl"
+    >
+      I built Dax.So to do one thing: Streamline the setup and deployment
+      of blockchain projects.
+    </p>
+    <p
+      class="mx-auto mt-4 max-w-3xl text-base text-t3-purple-200 md:text-xl lg:text-xl xl:text-xl"
+    >
+      After countless projects and many years on this tech, together with Consensys, we have lots of
+      opinions and insights. We've done our best to encode them into this CLI.
+    </p>
+    <p
+      class="mx-auto mt-4 max-w-3xl text-base text-t3-purple-200 md:text-xl lg:text-xl xl:text-xl"
+    >
+      This is NOT an all-inclusive template. <b
+        >We expect you to bring your own libraries.</b
+      > Check out <a href="/en/other-recs" class="text-t3-purple-600"
+        >our other recommendations</a
+      > for things like state management and deployment.
+    </p>
+  </div>
+  <div class="min-h-[300px] md:min-h-[400px]">
+    <CliPreview client:only="react" />
+  </div>
+  <div class="mx-auto mt-6 flex max-w-[800px] flex-col gap-2 md:gap-4 xl:max-w-full">
+
+    <h2
+      class="mb-0 w-full text-3xl font-bold text-t3-purple-50 md:text-5xl lg:text-5xl"
+    >
+      What is Dax.So?
+    </h2>
+    <h3 class="text-xl mb-2">
+      Dax.So is a CLI for building and deploying smart contracts.
+    </h3>
+    
+    <p
+    class="mx-auto mt-4 max-w-3xl text-base text-t3-purple-200 md:text-xl lg:text-xl xl:text-xl"
+    >
+    With Dax.So, entrepreneurs and developers can quickly launch their next crypto project with a single command. Our CLI allows users to easily install packages, deploy smart contracts, run tests, and execute other pre-defined tasks using simple commands. This helps to save time and effort for developers, especially those who are new to blockchain development or unfamiliar with writing complex scripts.
+    </p>
+    <p
+    class="mx-auto mt-4 max-w-3xl text-base text-t3-purple-200 md:text-xl lg:text-xl xl:text-xl"
+    >
+    With Dax.So, entrepreneurs and developers can quickly launch their next crypto project with a single command. Our CLI allows users to easily install packages, deploy smart contracts, run tests, and execute other pre-defined tasks using simple commands. This helps to save time and effort for developers, especially those who are new to blockchain development or unfamiliar with writing complex scripts.
+
+
+    </p>
+
+  </div>
+</PageSection>
