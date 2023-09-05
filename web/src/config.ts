@@ -6,7 +6,7 @@ export const SITE = {
 
 export const OPEN_GRAPH = {
   image: {
-    src: "./../public/images/Thumbnail.jpg",
+    src: "./images/Thumbnail.jpg",
     alt: "Create Web3 App: The best way to start a new crypto project.",
   },
   twitter: "haydenaylor",
