@@ -3,6 +3,28 @@ import fs from 'fs';
 import inquirer from "inquirer";
 import path from 'path';
 import { logger } from "../../utils/logger.ts";
+import { getPlatform, getUserPkgManager } from "../../utils/getUserPackageManager.ts";
+import sendAnalytics from "../../utils/analytics.ts";
+
+
+
+export const checkCompatibility = async (): Promise<void> => {
+    const platformIs = await getPlatform();
+    const packageManagerIs = await getUserPkgManager();
+    
+    if (await platformIs === "win" && await packageManagerIs === "yarn") {
+        logger.error("Yarn is not supported on Windows. Please use npm or pnpm.");
+        return;
+    }
+
+    if (await platformIs === "win" && await packageManagerIs === "pnpm") {
+        logger.error("pnpm is not supported on Windows. Please use npm or yarn.");
+        return;
+    }
+
+    logger.success(`Looks like you are using ${packageManagerIs} on ${platformIs}.`);
+
+}
 
 export const newProjectLocation = async (): Promise<void> => {
     //get current working directory
@@ -90,6 +112,7 @@ export const newProjectAuthor = async (): Promise<void> => {
 
 
 export const newFrontendAppType = async (): Promise<void> => {
+
     const { newFrontendAppType } = await inquirer.prompt<{ newFrontendAppType: string }>({
         name: 'newFrontendAppType',
         type: 'list',
@@ -103,4 +126,6 @@ export const newFrontendAppType = async (): Promise<void> => {
     responseData.newFrontendAppType = newFrontendAppType;
 
     await handleResponseChange(responseData);
+
+    await sendAnalytics('Frontend App', newFrontendAppType, responseData.sessionID as string);
 }
