@@ -1,4 +1,4 @@
-import { ResponseData, responseData } from '../store'; // adjust path to your store file
+import { ResponseData, responseData } from '../store.js'; // adjust path to your store file
 
 import fs from 'fs-extra';
 import handlebars from 'handlebars';

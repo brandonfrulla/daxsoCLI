@@ -1,9 +1,9 @@
-import { handleResponseChange, responseData } from "../../store";
+import { handleResponseChange, responseData } from "../../store.js";
 import fs from 'fs';
 import handlebars from "handlebars";
 import inquirer from "inquirer";
 import path from 'path';
-import { logger } from "../../utils/logger";
+import { logger } from "../../utils/logger.js";
 
 export const newProjectLocation = async (): Promise<void> => {
     //get current working directory

@@ -1,4 +1,4 @@
-import { handleResponseChange, responseData } from "../store";
+import { handleResponseChange, responseData } from "../store.js";
 
 export type PackageManager = "npm" | "pnpm" | "yarn";
 

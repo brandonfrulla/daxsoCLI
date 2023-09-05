@@ -1,6 +1,6 @@
 import fs from 'fs';
-import { newFrontendAppType, newProjectAuthor, newProjectLocation, newProjectName } from './questions/frontend';
-import { newSmartContractERC, promptBlockchain } from './questions/blockchain';
+import { newFrontendAppType, newProjectAuthor, newProjectLocation, newProjectName } from './questions/frontend/index.js';
+import { newSmartContractERC, promptBlockchain } from './questions/blockchain/index.js';
 
 // Define a type for the response data
 export type ResponseData = Record<string, unknown>;

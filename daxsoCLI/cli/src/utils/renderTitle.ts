@@ -1,6 +1,6 @@
 import gradient from "gradient-string";
-import { getUserPkgManager } from "./getUserPackageManager";
-import { fullTitle, titleText } from "../comp/title";
+import { getUserPkgManager } from "./getUserPackageManager.js";
+import { fullTitle, titleText } from "../comp/title.js";
 import chalk from 'chalk';
 import cfont from 'cfonts';
 

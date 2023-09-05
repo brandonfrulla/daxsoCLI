@@ -1,6 +1,6 @@
 import inquirer from "inquirer";
-import { responseData, handleResponseChange } from "../../store";
-import { logger } from "../../utils/logger";
+import { responseData, handleResponseChange } from "../../store.js";
+import { logger } from "../../utils/logger.js";
 
 export const promptBlockchain = async (): Promise<void> => {
     const { blockchain } = await inquirer.prompt<{ blockchain: string }>( {
