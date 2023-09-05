@@ -3,7 +3,7 @@ name: Continuous Integration
 on: [push, pull_request]
 
 jobs:
-  build_and_test:
+  build:
     name: Install and Build on ${{ matrix.os }} with ${{ matrix.package_manager }}
     runs-on: ${{ matrix.os }}
     strategy:
@@ -33,5 +33,38 @@ jobs:
       - name: Install dependencies
         run: ${{ matrix.package_manager }} install
 
-      - name: Run Jest tests
+      - name: Try to run build
         run: ${{ matrix.package_manager }} build
+  
+  test:
+    name: Install and Test on ${{ matrix.os }} with ${{ matrix.package_manager }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        node-version: [14.x, 16.x, 18.x]
+        package_manager: ['npm', 'pnpm', 'yarn']
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+      
+      - name: Install pnpm
+        if: matrix.package_manager == 'pnpm'
+        run: npm install -g pnpm
+
+      - name: Install yarn
+        if: matrix.package_manager == 'yarn'
+        run: npm install -g yarn
+
+      - name: Install dependencies
+        run: ${{ matrix.package_manager }} install
+
+      - name: Run tests
+        run: ${{ matrix.package_manager }} test
