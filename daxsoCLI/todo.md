@@ -12,4 +12,8 @@
   - [ ] confident engough to delete other repos
   - [ ] Rewrite env and keys for enterprise (infinscal?)
 - TB: Days
-- 
+- [ ] ci and testing/qol self delete after each run for debug
+- [ ] Deps check for 3rd party tools
+  - [ ] truffle
+    - [ ] ask for infura creds
+  - [ ] ganache
