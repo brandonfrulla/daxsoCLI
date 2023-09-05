@@ -1,0 +1,124 @@
+---
+import { Fragment } from "react";
+import PageSection from "../pageSection.astro";
+import Feature from "./card.astro";
+---
+
+<PageSection size={"24"} id="stack">
+  <div class="mx-auto max-w-7xl px-4 pb-12 text-t3-purple-100 sm:px-6 lg:px-8">
+    <div class="mb-10 md:text-center">
+      <h2
+        class="text-xl font-semibold text-t3-purple-200 md:text-2xl lg:text-2xl"
+      >
+        The best of the blockchain ecosystem...
+      </h2>
+      <h3
+        class="mt-2 text-3xl font-bold tracking-tight text-t3-purple-50 md:text-5xl lg:text-5xl"
+      >
+        ...built with all the best tools
+      </h3>
+      <p class="mt-4 text-base text-t3-purple-200 md:text-lg">
+        Configuration out of the box. Ready to go.
+      </p>
+    </div>
+    <div>
+      <div
+        class="space-y-10 sm:grid sm:grid-flow-col sm:grid-cols-2 sm:grid-rows-3 sm:gap-x-6 sm:gap-y-14 sm:space-y-0 md:grid-cols-3 md:grid-rows-2 lg:gap-x-8"
+      >
+        <Feature title="Infura" href="https://www.infura.io/">
+          <svg
+            aria-hidden="true"
+            slot="icon"
+            version="1.1"
+            viewBox="78.332 78.333 184.686 156.667"
+            class="aspect-square h-10 py-1"
+            xmlns="http://www.w3.org/2000/svg"
+            x="0px"
+            y="0px">
+         <polygon points="83.715,78.333 83.715,102.172 140.666,96.306 161.688,96.306 161.688,134.895 126.291,145.722 78.332,157.29 
+           85.452,180.596 131.413,162.936 161.688,153.687 161.688,217.03 140.666,217.03 83.715,211.161 83.715,235 257.635,235 
+           257.635,211.161 200.683,217.03 179.66,217.03 179.66,153.687 209.786,162.889 255.9,180.596 263.017,157.29 215.188,145.756 
+           179.66,134.895 179.66,96.306 200.683,96.306 257.635,102.172 257.635,78.333 	"/>
+       </svg>
+          <Fragment slot="description">
+            Infura is a scalable and reliable API that provides access to Ethereum and IPFS networks for developers. It allows developers to easily build and deploy decentralized applications without having to run their own nodes or infrastructure.
+          </Fragment>
+        </Feature>
+
+        <Feature title="Truffle" href="https://trufflesuite.com/">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 206.83 204.29"
+          class="aspect-square h-10 py-1"
+          ><defs><style
+            >.cls-1{fill:#5e464d;}.cls-2{fill:#fff;}.cls-3{fill:#3fe0c5;}</style></defs><title
+          >Truffle</title>
+
+            <ellipse
+                class="cls-1"
+                cx="103.17"
+                cy="102.14"
+                rx="100.96"
+                ry="102.14"
+              />
+              <path
+                id="Fill-6"
+                class="cls-2"
+                d="M71.42,192.71c4.13,1.41,18,5.92,18.59,1.51.32-2.42-7-4.9-16.91-10.15a159,159,0,0,1-38.25-28.26A87.82,87.82,0,0,1,8.53,94.75c-.84-30.9,11.24-55.88,31.11-72A101.88,101.88,0,0,0,0,100.9c-.59,22.35,5.66,41.18,17.4,58.32A66.24,66.24,0,0,0,30.12,171.7c11.24,8.51,27.69,16.38,41.3,21"
+              />
+              <path
+                id="Fill-8"
+                class="cls-2"
+                d="M205.52,78.73c-6.26-29.44-25.72-50.05-51.75-64.61,19.9,14.17,47.92,44.3,31.41,70.86-14,21.29-48.05,17.12-66.66,7C96.4,80,68.69,53,96,26.61c17.7-17.08,74,2.07,64.09,27.6-5.78,14.85-28.27,11.55-38.4,4.29C114.25,53.14,108,43.93,111.3,34.42c1.06-3.05.91-7.78-3.4-4.3-3.21,2.6-4.82,6.88-5.39,10.86-4.71,33.29,54.6,59.1,72.2,26.89,9.13-16.72-5.67-41-24.3-50.94-14-7.5-28.57-12.77-46.43-11.49-28.55,2-52.52,19.9-55.53,49.08-3,29,16.39,55.1,39.22,70.71,24,16.4,56.26,27.21,85.78,17.43,26.47-8.77,37.4-39.14,32.07-63.93"
+              />
+              <path
+                id="Fill-10"
+                class="cls-3"
+                d="M168.28,56.18C171.12,37.1,153.87,24,137.94,18.05c-18.78-7-43.59-3.94-57.26,11.61-10,11.42-9.36,28-4.2,41.42,7.8,20.27,25.41,34.92,45.91,41.25,14.57,4.5,32.18,6.46,46.94,1.71,21.53-6.93,28.54-29.38,24.09-49.95a59.08,59.08,0,0,0-4.36-12.88C186.34,45.5,178,33.94,189.5,48a51.42,51.42,0,0,1,3.31,4.91,54.76,54.76,0,0,1,5.59,12.41c6.26,19.2,1.35,41.6-16,53.19-13.31,8.87-30.23,9.93-45.67,7.71-20.7-3-40.21-13-53.76-29.09-12.39-14.67-20.84-35.74-15.75-55,3.73-14.09,15.17-24.61,28.87-29,17.33-5.61,36.41-3,52,6.11,7.81,4.55,15,10.85,18.94,19.11a28.35,28.35,0,0,1,2.85,11.93,24.73,24.73,0,0,1-.39,5c-.11.6-1.38,2.29-1.2.9"
+              />
+
+            </svg>
+        
+          <Fragment slot="description">
+            Truffle is a popular development environment, testing framework, and asset pipeline for building decentralized applications (dApps) on the Ethereum blockchain. It provides developers with a suite of tools for compiling, deploying, and managing smart contracts, as well as testing and debugging dApps.
+          </Fragment>
+        </Feature>
+
+        <Feature title="Tailwind CSS" href="https://tailwindcss.com/">
+          <svg
+            aria-hidden="true"
+            slot="icon"
+            role="img"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+            class="aspect-square h-10 fill-[#06B6D4] py-1"
+          >
+            <title>Tailwind CSS</title>
+            <path
+              d="M12.001,4.8c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 C13.666,10.618,15.027,12,18.001,12c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C16.337,6.182,14.976,4.8,12.001,4.8z M6.001,12c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 c1.177,1.194,2.538,2.576,5.512,2.576c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C10.337,13.382,8.976,12,6.001,12z"
+            ></path>
+          </svg>
+          <Fragment slot="description">
+            Tailwind is a utility-first CSS framework that provides pre-designed styles and utility classes for building responsive and modern user interfaces quickly and easily, without writing custom CSS.
+          </Fragment>
+        </Feature>
+
+        <Feature title="OpenZeppelin" href="https://trpc.io/">
+          
+          <Fragment slot="description">
+            OpenZeppelin is a battle-tested library for secure smart contract development on the Ethereum blockchain. It provides developers with a set of reusable and audited smart contract building blocks, that can be integrated into their apps to enhance security and reduce development time.
+          </Fragment>
+        </Feature>
+
+        <Feature title="React" href="https://react.dev/">
+          <Fragment slot="description">
+            React is a popular open-source JavaScript library for building user interfaces. It allows developers to create reusable UI components that can be easily combined to create complex, interactive applications. React is able to efficiently update and render UI components, even in large and complex applications.
+          </Fragment>
+        </Feature>
+        <Feature title="Nextjs" href="https://nextjs.org/">
+          <Fragment slot="description">
+            Next.js is a popular open-source React framework for building server-side rendered (SSR) web applications. It provides developers with a powerful set of tools and features for building complex, highly performant web applications quickly and easily.
+          </Fragment>
+        </Feature>
+      </div>
+    </div>
+  </div>
+</PageSection>
