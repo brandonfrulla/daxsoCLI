@@ -1,4 +1,4 @@
-# Developer Acceleration Experience [beta.dax.so](https://beta.dax.so)
+# Developer Acceleration Experience (DAX)
 
 Welcome to the Developer Acceleration eXperience for Smart Contract Organizations or DAX. This is an open-source CLI tool designed to help you start, build and deploy Web3 projects faster with (hopefully) better opinions and smoother developer experience.
 
