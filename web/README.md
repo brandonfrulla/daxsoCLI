@@ -1,4 +1,4 @@
-# create-daxso-proj Documentation Site
+# DAXSO Documentation Site
 
 Based on the [Astro Starter Kit: Docs Site](https://github.com/withastro/astro/tree/latest/examples/docs). New to Astro?
 
@@ -8,15 +8,17 @@ Based on the [Astro Starter Kit: Docs Site](https://github.com/withastro/astro/t
 
 ## Outline
 
-- [Features](#features)
-- [Run Site Locally](#run-site-locally)
-- [Command Cheat Sheet](#command-cheat-sheet)
-- [Customize This Theme](#customize-this-theme)
-  - [Site Metadata](#site-metadata)
-  - [CSS Styling](#css-styling)
-  - [Page Metadata](#page-metadata)
-  - [Sidebar Navigation](#sidebar-navigation)
-  - [Multiple Languages Support](#multiple-languages-support)
+- [DAXSO Documentation Site](#daxso-documentation-site)
+  - [Outline](#outline)
+  - [Features](#features)
+  - [Run Site Locally](#run-site-locally)
+  - [Command Cheat Sheet](#command-cheat-sheet)
+  - [Customize This Theme](#customize-this-theme)
+    - [Site Metadata](#site-metadata)
+    - [CSS Styling](#css-styling)
+    - [Page Metadata](#page-metadata)
+    - [Sidebar Navigation](#sidebar-navigation)
+    - [Multiple Languages Support](#multiple-languages-support)
 
 ## Features
 
@@ -32,8 +34,8 @@ Based on the [Astro Starter Kit: Docs Site](https://github.com/withastro/astro/t
 ## Run Site Locally
 
 ```bash
-git clone https://github.com/t3-oss/create-daxso-proj.git
-cd create-daxso-proj/www
+git clone https://github.com/Dax911/daxsoCLI.git
+cd web
 pnpm i
 pnpm dev
 ```
@@ -59,7 +61,7 @@ All commands are run from the root of the project, from a terminal.
 
 ### CSS Styling
 
-The theme's look and feel is controlled by a few key variables that you can customize yourself. You'll find them in the `public/theme.css` CSS file. If you've never worked with CSS variables before, give [MDN's guide on CSS variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) a quick read.
+The theme's look and feel are controlled by a few key variables that you can customize yourself. You'll find them in the `public/theme.css` CSS file. If you've never worked with CSS variables before, give [MDN's guide on CSS variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) a quick read.
 
 This theme uses a "cool blue" accent color by default. To customize this for your project, change the `--theme-accent` variable to whatever color you'd like:
 
@@ -86,7 +88,7 @@ layout: ../../layouts/MainLayout.astro
 # Page content...
 ```
 
-This uses the `title` and `description` properties to set the document title, meta title, meta description, and Open Graph description. See `src/components/HeadSEO.astro` for more SEO related properties.
+This uses the `title` and `description` properties to set the document title, meta title, meta description, and Open Graph description. See `src/components/HeadSEO.astro` for more SEO-related properties.
 
 ### Sidebar Navigation
 
@@ -108,7 +110,7 @@ export const SIDEBAR = {
 };
 ```
 
-Note the top-level `en` key: This is needed for multi-language support. You can change it to whatever language you'd like, or add new languages as you go. More details on this below.
+Note the top-level `en` key: This is needed for multi-language support. You can change it to whatever language you'd like, or add new languages as you go. More details on this are below.
 
 ### Multiple Languages Support
 

@@ -3,7 +3,7 @@ import { fetchGithub } from "../../utils/fetchGithub";
 import { getIsRtlFromUrl, getLanguageFromURL } from "../../languages";
 
 const githubStars =
-  (await fetchGithub("https://api.github.com/repos/Dax911/daxdocs", {
+  (await fetchGithub("https://api.github.com/repos/Dax911/daxsoCLI", {
     throwIfNoAuth: false,
     fetchType: "repo",
   }).then((data) => data?.stargazers_count)) ?? 42069;
@@ -21,7 +21,7 @@ const isRtl = getIsRtlFromUrl(pathname);
 
 <a
   id="github-link"
-  href="https://github.com/Dax911/daxdocs"
+  href="https://github.com/Dax911/daxsoCLI"
   class="group flex items-center rounded-lg no-underline"
   aria-label="github repository link"
 >

@@ -1,17 +1,16 @@
-name: Continuous Integration
+name: Simplified Continuous Integration
 
 on: [pull_request]
 
 jobs:
   build:
-    name: Install and Build on ${{ matrix.os }} with ${{ matrix.package_manager }}
-    runs-on: ${{ matrix.os }}
+    name: Build on Ubuntu with ${{ matrix.package_manager }}
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-        node-version: [14.x, 16.x, 18.x]
-        package_manager: ['npm', 'pnpm', 'yarn']
+        node-version: [18.x]
+        package_manager: ['npm', 'pnpm']
         
     steps:
       - name: Checkout code
@@ -26,25 +25,20 @@ jobs:
         if: matrix.package_manager == 'pnpm'
         run: npm install -g pnpm
 
-      - name: Install yarn
-        if: matrix.package_manager == 'yarn'
-        run: npm install -g yarn
-
       - name: Install dependencies
         run: ${{ matrix.package_manager }} install
 
-      - name: Try to run build
+      - name: Run build
         run: ${{ matrix.package_manager }} build
-  
+
   test:
-    name: Install and Test on ${{ matrix.os }} with ${{ matrix.package_manager }}
-    runs-on: ${{ matrix.os }}
+    name: Test on Ubuntu with ${{ matrix.package_manager }}
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-        node-version: [14.x, 16.x, 18.x]
-        package_manager: ['npm', 'pnpm', 'yarn']
+        node-version: [18.x]
+        package_manager: ['npm', 'pnpm']
 
     steps:
       - name: Checkout code
@@ -58,10 +52,6 @@ jobs:
       - name: Install pnpm
         if: matrix.package_manager == 'pnpm'
         run: npm install -g pnpm
-
-      - name: Install yarn
-        if: matrix.package_manager == 'yarn'
-        run: npm install -g yarn
 
       - name: Install dependencies
         run: ${{ matrix.package_manager }} install

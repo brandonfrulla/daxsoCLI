@@ -26,19 +26,7 @@
     },
     {
       "source": "/github",
-      "destination": "https://github.com/Dax911/daxdocs"
-    },
-    {
-      "source": "/showcase",
-      "destination": "/en/t3-collection"
-    },
-    {
-      "source": "/collection",
-      "destination": "/en/t3-collection"
-    },
-    {
-      "source": "/awesome",
-      "destination": "/en/t3-collection"
+      "destination": "https://github.com/Dax911/daxsoCLI"
     }
   ]
 }

@@ -13,7 +13,7 @@ My journey into Web3 began after a deep dive into Next.js and building close con
 
 ## Fixable Problems
 
-To address this fragmentation and lack of coherence, the Developer Acceleration eXperience for Smart-contract Organizations provides a comprehensive toolkit that streamlines the development process. With a single set of command-line interface (CLI) tools, developers can install, build, test, manage, and deploy entire projects from start to finish. This toolkit aims to eliminate the pain points and difficulties associated with spinning up new projects quickly and effectively.
+To address this fragmentation and lack of coherence, the **Developer Acceleration eXperience for Smart-contract Organizations** provides a comprehensive toolkit that streamlines the development process. With a single set of command-line interface (CLI) tools, developers can install, build, test, manage, and deploy entire projects from start to finish. This toolkit aims to eliminate the pain points and difficulties associated with spinning up new projects quickly and effectively.
 
 ### Consensys Solutions
 

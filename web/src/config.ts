@@ -31,7 +31,7 @@ export const KNOWN_LANGUAGES = {
 } as const;
 export type KnownLanguageCode = keyof typeof KNOWN_LANGUAGES;
 
-export const GITHUB_EDIT_URL = `https://github.com/Dax911/Create-Web3-App/tree/main/apps/doc`;
+export const GITHUB_EDIT_URL = `https://github.com/Dax911/daxsoCLI/tree/main/web`;
 
 export const COMMUNITY_INVITE_URL = `https://discord.gg/2UbYreY9bR`;
 
@@ -42,7 +42,7 @@ export const ALGOLIA = {
   apiKey: "14937c13e906c36b2076548d895d487f",
 };
 
-export type OuterHeaders = "Create Web3 App" | "Usage" | "Deployment";
+export type OuterHeaders = "Create Web3 App" | "Usage" | "Deployment" | "Contributing";
 
 export type SidebarItem<TCode extends KnownLanguageCode = KnownLanguageCode> = {
   text: string;
@@ -74,24 +74,20 @@ export const SIDEBAR: Sidebar = {
     "Create Web3 App": [
       { text: "Introduction", link: "en/introduction" },
       { text: "Why Dax.So?", link: "en/why" },
-      { text: "Installation", link: "en/installation" },
-      { text: "Folder Structure", link: "en/folder-structure" },
+      { text: "Getting Started", link: "en/start" },
       { text: "FAQ", link: "en/faq" },
     ],
     Usage: [
       { text: "First Steps", link: "en/usage/first-steps" },
       { text: "Contracts", link: "en/usage/contract" },
-      { text: "Infura", link: "en/usage/infura" },
-      { text: "Truffle", link: "en/usage/trpc" },
-      {
-        text: "Environment Variables",
-        link: "en/usage/env-variables",
-      },
-      { text: "Tailwind CSS", link: "en/usage/tailwind" },
     ],
     Deployment: [
       { text: "Vercel", link: "en/deployment/vercel" },
       { text: "Infura", link: "en/deployment/infura" },
+    ],
+    Contributing: [
+      { text: "Contributing", link: "en/contrib/contributing" },
+      { text: "Code Generation", link: "en/contrib/codegen" },
     ],
   },
   
