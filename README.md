@@ -1,4 +1,4 @@
-# DaxSo
+# Developer Acceleration Experience [http://DAX.so](https://DAX.so)
 
 Welcome to the Developer Acceleration eXperience for Smart Contract Organizations or DAXSO. This is an open-source CLI tool designed to help you start, build and deploy Web3 projects faster with (hopefully) better opinions and smoother developer experience.
 
