@@ -1,8 +1,8 @@
-# Developer Acceleration Experience [http://DAX.so](https://DAX.so)
+# Developer Acceleration Experience [beta.dax.so](https://beta.dax.so)
 
-Welcome to the Developer Acceleration eXperience for Smart Contract Organizations or DAXSO. This is an open-source CLI tool designed to help you start, build and deploy Web3 projects faster with (hopefully) better opinions and smoother developer experience.
+Welcome to the Developer Acceleration eXperience for Smart Contract Organizations or DAX. This is an open-source CLI tool designed to help you start, build and deploy Web3 projects faster with (hopefully) better opinions and smoother developer experience.
 
-DaxSo is a mono-repository powered by Turbo that houses a robust suite of applications and libraries related to blockchain technologies and front-end frameworks. It uses the power of TypeScript for static type-checking and enhanced developer productivity.
+D.A.X. is a mono-repository powered by Turbo that houses a robust suite of applications and libraries related to blockchain technologies and front-end frameworks. It uses the power of TypeScript for static type-checking and enhanced developer productivity.
 
 ## NPM Instructions (Not Ready Yet)
 
